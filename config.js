@@ -1,4 +1,4 @@
-var editorName = 'BusLanes'
+var editorName = 'TaxiLanes'
 var version = '0.2.0'
 
 var useTestServer = false;
