@@ -2,8 +2,8 @@
     "data_format": 1,
     "data_url": "https://zlant.github.io/bus-lanes/taginfo.json",
     "project": {
-        "name": "Bus lanes viewer",
-        "description": "Bus lanes viewer from OpenStreetMap",
+        "name": "Taxi lanes viewer",
+        "description": "Taxi & PSV lanes viewer from OpenStreetMap",
         "project_url": "https://zlant.github.io/bus-lanes/",
         "doc_url": "https://github.com/zlant/bus-lanes"
     },
@@ -49,7 +49,20 @@
         { "key": "lanes:psv:forward",  "object_types": [ "way" ] },
         { "key": "lanes:psv:backward",  "object_types": [ "way" ] },
 
+        { "key": "lanes:taxi",  "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "2", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "3", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "4", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "5", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "6", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "7", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "8", "object_types": [ "way" ] },
+        { "key": "lanes:taxi", "value": "9", "object_types": [ "way" ] },
+        { "key": "lanes:taxi:forward",  "object_types": [ "way" ] },
+        { "key": "lanes:taxi:backward",  "object_types": [ "way" ] },
+
         { "key": "bus", "value": "yes", "object_types": [ "way" ] },
-        { "key": "psv", "value": "yes", "object_types": [ "way" ] }
+        { "key": "psv", "value": "yes", "object_types": [ "way" ] },
+        { "key": "taxi", "value": "yes", "object_types": [ "way" ] }
     ]
 }
