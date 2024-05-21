@@ -65,7 +65,10 @@
         { "key": "lanes:taxi:backward",  "object_types": [ "way" ] },
 
         { "key": "bus", "value": "yes", "object_types": [ "way" ] },
+        { "key": "bus", "value": "designated", "object_types": [ "way" ] }
         { "key": "psv", "value": "yes", "object_types": [ "way" ] },
-        { "key": "taxi", "value": "yes", "object_types": [ "way" ] }
+        { "key": "psv", "value": "designated", "object_types": [ "way" ] },
+        { "key": "taxi", "value": "yes", "object_types": [ "way" ] },
+        { "key": "taxi", "value": "designated", "object_types": [ "way" ] }
     ]
 }
