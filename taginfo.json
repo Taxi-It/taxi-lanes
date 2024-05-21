@@ -1,11 +1,14 @@
 {
     "data_format": 1,
-    "data_url": "https://zlant.github.io/bus-lanes/taginfo.json",
+    "__data_url__old": "https://zlant.github.io/bus-lanes/taginfo.json",
+    "data_url": "https://taxi-it.github.io/taxi-lanes/taginfo.json",
     "project": {
         "name": "Taxi lanes viewer",
         "description": "Taxi & PSV lanes viewer from OpenStreetMap",
-        "project_url": "https://zlant.github.io/bus-lanes/",
-        "doc_url": "https://github.com/zlant/bus-lanes"
+        "__project_url__old": "https://zlant.github.io/bus-lanes/",
+        "project_url": "https://taxi-it.github.io/taxi-lanes/",
+        "__doc_url__old": "https://github.com/zlant/bus-lanes"
+        "doc_url": "https://taxi-it.github.io/taxi-lanes/"
     },
     "tags": [
         { "key": "highway", "value": "motorway", "object_types": [ "way" ], "description": "major road" },
