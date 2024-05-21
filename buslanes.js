@@ -339,7 +339,7 @@ function parseWay(way) {
 }
 
 function confirmSide(side, tags) {
-    return isPsvLane(side, tags) || isBusLane(side, tags);
+    return isPsvLane(side, tags) || isBusLane(side, tags) || isTaxiLane(side, tags);
 }
 
 function isBusLane(side, tags) {
@@ -365,6 +365,16 @@ function isPsvLane(side, tags) {
         return true;
     else if (side == 'left' &&
         tags.find(x => x.$k == 'lanes:psv:backward' || (x.$k == 'lanes:psv' && /^[2-9]$/.test(x.$v))))
+        return true;
+    return false;
+}
+
+function isTaxiLane(side, tags) {
+    if (side == 'right' &&
+        tags.find(x => x.$k == 'lanes:taxi:forward' || x.$k == 'lanes:taxi'))
+        return true;
+    else if (side == 'left' &&
+        tags.find(x => x.$k == 'lanes:taxi:backward' || (x.$k == 'lanes:taxi' && /^[2-9]$/.test(x.$v))))
         return true;
     return false;
 }
@@ -424,7 +434,8 @@ function addLane(line, conditions, side, osm, offset, isMajor) {
         'empty': 'black',
         'left': 'dodgerblue',
         'right': 'dodgerblue',
-        'middle': 'limegreen'
+        'middle': 'limegreen',
+        'taxi': 'orange'  // Colore per le corsie taxi
     }
 
     var lanes_offsets = {
@@ -464,7 +475,7 @@ function getQueryBusLanes() {
         var bbox = [bounds.getSouth(), bounds.getWest(), bounds.getNorth(), bounds.getEast()].join(',');
         return editorMode
             ? '[out:xml];(way[highway~"^motorway|trunk|primary|secondary|tertiary|unclassified|residential|service"](' + bbox + ');)->.a;(.a;.a >;.a <;);out meta;'
-            : '[out:xml];(way["highway"][~"^(lanes:(psv|bus)|busway).*"~"."](' + bbox + ');way["highway"][~"access|motor_vehicle"~"no"][~"psv|bus"~"yes|designated"](' + bbox + ');)->.a;(.a;.a >;);out meta;';
+            : '[out:xml];(way["highway"][~"^(lanes:(psv|bus)|busway|taxi).*"~"."](' + bbox + ');way["highway"][~"access|motor_vehicle"~"no"][~"psv|bus|taxi"~"yes|designated"](' + bbox + ');)->.a;(.a;.a >;);out meta;';
     }
 }
 
@@ -725,6 +736,27 @@ function getTagsBlock(side, osm) {
         label.innerText = 'Only bus lane';
         divLine.appendChild(label);
         div.appendChild(divLine);
+
+        // taxi add
+        
+        var divLine = document.createElement('div');
+
+        var checkBoth = document.createElement('input');
+        checkBoth.style.display = 'inline';
+        checkBoth.setAttribute('type', 'checkbox');
+        checkBoth.setAttribute('name', 'lanes:taxi:' + sideAlias);
+        checkBoth.setAttribute('id', 'lanes:taxi:' + sideAlias);
+        checkBoth.checked = isTaxiLane(side, osm.tag);
+        checkBoth.onchange = addOrUpdate;
+        divLine.appendChild(checkBoth);
+
+        var label = document.createElement('label');
+        label.setAttribute('for', 'lanes:taxi:' + sideAlias);
+        label.style.display = 'inline';
+        label.innerText = 'Only taxi lane';
+        divLine.appendChild(label);
+        div.appendChild(divLine);
+        
     }
 
     return div;
